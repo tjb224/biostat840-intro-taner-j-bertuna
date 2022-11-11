@@ -1,5 +1,5 @@
 ---
-title: "Data Analysis"
+title: "Example Analysis"
 editor: visual
 bibliography: website.bib
 
@@ -11,11 +11,13 @@ bibliography: website.bib
 
 ### Objective
 
-The goal of the analysis is to describe variability in penguin body mass per the palmer penguins data set.
+The goal of the analysis is to describe variability in penguin body mass per the Palmer Penguins data set. This is intended to be viewed by anyone that is interested in penguin body mass dynamics. 
 
 ### The data
 
 ### Data dictionary:
+
+The data set includes measured information for a cohort of penguins. The data set includes information for 344 penguins, including their location, date of observation, biometric data, and general comments.
 
 Can be accessed at this link: 
 
@@ -120,7 +122,7 @@ penguins_data %>%
 Linear regression with body mass in lbs as dependent variable and sex as independent variable 
 [@linear_regression]
 
-```{r}
+```{r echo = F}
 uni_sex = lm(`Body Mass (lbs)` ~ Sex, data=penguins_data)
 
 summary(uni_sex)
@@ -135,7 +137,7 @@ The analysis looked at three variables to see if they has a statistically signif
 
 
 :::{.callout-note}
-Libraries used: ggplot2, tidyverse, and palmerspenguins
+Libraries used: ggplot2, tidyverse, RefManageR, bibtex, and palmerspenguins
 :::
 
 

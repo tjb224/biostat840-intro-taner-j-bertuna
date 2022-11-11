@@ -4,6 +4,6 @@ title: "Taner Bertuna's Website"
 
 Welcome to Taner Bertuna's personal website!! 
 
-I am an aspiring epidemiologist with a diverse set of backgrounds and passions. In my personal life I love to sail competitively on the Chesapeake Bay and hike with my partner and my dog. 
+I am an aspiring epidemiologist with a diverse set of experiences and passions. In my personal life, I love to sail competitively on the Chesapeake Bay and hike with my partner and my dog. 
 
 ![](cornellsailing.png)
