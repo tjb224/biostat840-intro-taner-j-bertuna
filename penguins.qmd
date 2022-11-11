@@ -1,0 +1,146 @@
+---
+title: "Data Analysis"
+editor: visual
+bibliography: website.bib
+
+---
+
+![](palmerpens.png)
+[@Palmerpenguins]
+
+
+### Objective
+
+The goal of the analysis is to describe variability in penguin body mass per the palmer penguins data set.
+
+### The data
+
+### Data dictionary:
+
+Can be accessed at this link: 
+
+https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-07-28/readme.md
+
+[@dictionary]
+
+### Data exploration:
+
+```{r include = F}
+library(tidyverse)
+library(ggplot2)
+library(palmerpenguins)
+library(RefManageR)
+library(bibtex)
+```
+
+:::{.callout-note}
+Remove `comments`, `delta 15` and `delta 13` columns
+:::
+
+```{r echo = F}
+penguins_data <- penguins_raw %>% select(studyName:Sex) %>% mutate(`Body Mass (lbs)` = `Body Mass (g)`*.00220462)
+
+```
+
+What is the mean body weight of each of the three species? 
+```{r echo = F}
+penguins_data %>% 
+  group_by(Species) %>% 
+  filter(!is.na(`Body Mass (lbs)`)) %>%
+  summarize(mean_mass = mean(`Body Mass (lbs)`)) 
+
+```
+
+What is the mean body weight for each sex?
+```{r echo = F}
+penguins_data %>%
+  group_by(Sex) %>% 
+  filter(!is.na(`Body Mass (lbs)`)) %>%
+  filter(!is.na(Sex)) %>%
+  summarize(mean_mass = mean(`Body Mass (lbs)`)) 
+
+```
+
+What is the mean body weight of of the penguins on each island?
+```{r echo = F}
+penguins_data %>%
+  group_by(Island) %>%
+  filter(!is.na(`Body Mass (lbs)`)) %>%
+  summarize(mean_mass = mean(`Body Mass (lbs)`))
+
+```
+
+### Plots
+[@ggplot]
+
+
+```{r}
+penguins_data %>% 
+  group_by(Species, Sex) %>%
+  filter(!is.na(`Body Mass (lbs)`)) %>%
+  filter(!is.na(Sex)) %>%
+  summarize(mean_mass = mean(`Body Mass (lbs)`)) %>%
+  ggplot(aes(x = Sex, y = mean_mass,  fill = Species)) +
+  geom_bar(position="dodge", stat="identity") + 
+  ylab("Mean Body Mass in lbs") + 
+  ggtitle("Table 1: Penguin Body Mass by Sex, Broken Down by Species") + 
+  labs(subtitle = "Males seem to have higher body masses for all species")
+
+```
+
+:::{.callout-note}
+The grey bands mark the bounds of the LOESS smoothed lines' 95% confidence interval.
+:::
+
+```{r echo = F}
+penguins_data %>% 
+  filter(!is.na(`Body Mass (lbs)`)) %>%
+  ggplot(aes(x = `Flipper Length (mm)`, y = `Body Mass (lbs)`,  color = Species)) +
+  geom_point() +
+  geom_smooth(method = "lm") + 
+  ylab("Mean Body Mass in lbs") + 
+  ggtitle("Table 2: Penguin Body Mass by Flipper Length, Broken Down by Species") + 
+  labs(subtitle = "There is a uniform positive association between increased flipper length and increased body mass. ")
+
+```
+
+```{r echo = F}
+penguins_data %>%
+  group_by(Island, Species) %>%
+  filter(!is.na(`Body Mass (lbs)`)) %>%
+  summarize(mean_mass = mean(`Body Mass (lbs)`)) %>%
+  ggplot(aes(x = Island, y = mean_mass)) +
+  geom_bar(position="dodge", stat="identity", fill = "lightblue") +  facet_wrap(. ~ Species) + 
+  ylab("Mean Body Mass in lbs") + 
+  ggtitle("Table 3: Penguin Body Mass by Island, Fasceted by Species") + 
+  labs(subtitle = "Adelie penguins apprear to be of similar size accross all islands.")
+
+```
+
+Linear regression with body mass in lbs as dependent variable and sex as independent variable 
+[@linear_regression]
+
+```{r}
+uni_sex = lm(`Body Mass (lbs)` ~ Sex, data=penguins_data)
+
+summary(uni_sex)
+
+```
+
+::: {.column-margin}
+Note that the p value for *sex* is statistically significant
+:::
+
+The analysis looked at three variables to see if they has a statistically significant impact on the body mass of the palmer penguins. Looking at sex, table 1 indicates that males have a larger average body mass as compared to females, across all three species'. This is supported by a simple uni variate linear regression that indicates that males weight about 4.5 lbs more than females (this association is statistically significant with a p value of < 0.000). Looking at flipper length, table 2 indicates that there is a clear positive association between length and body mass for all three species and that the association is more pronounced for Gentoo penguins. Finally, table 3 shows that the only penguin species found across all three islands (Adelie penguins) do not vary in weight across the islands, indicating that island verity does not effect average weight for the species in question.  
+
+
+:::{.callout-note}
+Libraries used: ggplot2, tidyverse, and palmerspenguins
+:::
+
+```{r}
+
+knitr::write_bib("rmarkdown", file = "my-refs.bib")
+
+```
+

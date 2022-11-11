@@ -1,0 +1,22 @@
+project:
+  type: website
+
+website:
+  title: "Taner's Website"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - about.qmd
+      - penguins.qmd
+
+format:
+  html:
+    theme: darkly
+    css: styles.css
+    toc: true
+
+editor: visual
+
+execute:
+  freeze: auto
