@@ -138,9 +138,4 @@ The analysis looked at three variables to see if they has a statistically signif
 Libraries used: ggplot2, tidyverse, and palmerspenguins
 :::
 
-```{r}
-
-knitr::write_bib("rmarkdown", file = "my-refs.bib")
-
-```
 
