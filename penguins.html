@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Taner’s Website - Data Analysis</title>
+<title>Taner’s Website - Example Analysis</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -171,7 +171,7 @@ div.csl-indent {
   </li>  
   <li class="nav-item">
     <a class="nav-link active" href="./penguins.html" aria-current="page">
- <span class="menu-text">Data Analysis</span></a>
+ <span class="menu-text">Example Analysis</span></a>
   </li>  
 </ul>
               <div id="quarto-search" class="" title="Search"></div>
@@ -201,7 +201,7 @@ div.csl-indent {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Data Analysis</h1>
+<h1 class="title">Example Analysis</h1>
 </div>
 
 
@@ -219,13 +219,14 @@ div.csl-indent {
 <p><img src="palmerpens.png" class="img-fluid"> <span class="citation" data-cites="Palmerpenguins">(<a href="#ref-Palmerpenguins" role="doc-biblioref"><span>“Introduction to Palmerpenguins”</span> n.d.</a>)</span></p>
 <section id="objective" class="level3">
 <h3 class="anchored" data-anchor-id="objective">Objective</h3>
-<p>The goal of the analysis is to describe variability in penguin body mass per the palmer penguins data set.</p>
+<p>The goal of the analysis is to describe variability in penguin body mass per the Palmer Penguins data set. This is intended to be viewed by anyone that is interested in penguin body mass dynamics.</p>
 </section>
 <section id="the-data" class="level3">
 <h3 class="anchored" data-anchor-id="the-data">The data</h3>
 </section>
 <section id="data-dictionary" class="level3">
 <h3 class="anchored" data-anchor-id="data-dictionary">Data dictionary:</h3>
+<p>The data set includes measured information for a cohort of penguins. The data set includes information for 344 penguins, including their location, date of observation, biometric data, and general comments.</p>
 <p>Can be accessed at this link:</p>
 <p>https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-07-28/readme.md</p>
 <p><span class="citation" data-cites="dictionary">(<a href="#ref-dictionary" role="doc-biblioref"><em><span>DataSets</span></em> 2022</a>)</span></p>
@@ -335,9 +336,6 @@ Note
 </div>
 <p>Linear regression with body mass in lbs as dependent variable and sex as independent variable <span class="citation" data-cites="linear_regression">(<a href="#ref-linear_regression" role="doc-biblioref"><span>“R Linear Regression Tutorial: Lm Function in r with Code Examples”</span> n.d.</a>)</span></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>uni_sex <span class="ot">=</span> <span class="fu">lm</span>(<span class="st">`</span><span class="at">Body Mass (lbs)</span><span class="st">`</span> <span class="sc">~</span> Sex, <span class="at">data=</span>penguins_data)</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(uni_sex)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -374,7 +372,7 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Libraries used: ggplot2, tidyverse, and palmerspenguins</p>
+<p>Libraries used: ggplot2, tidyverse, RefManageR, bibtex, and palmerspenguins</p>
 </div>
 </div>
 
